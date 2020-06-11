@@ -5,4 +5,6 @@
     apt: name={{item}}
     with_items: 
         - htop
-        - vim
+        - neovim
+  - name: Install vim plugins
+    shell: nvim +PluginInstall +qall --headless
