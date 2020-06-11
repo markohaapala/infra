@@ -2,12 +2,12 @@
   tasks:
   - name: Install packages
     become: true
-    apt: name={{item}}
-    with_items: 
-        - htop
-        - neovim
+    apt:
+      name: ['htop', 'neovim']
+
   - name: Copy templates
     template: src=templates/.vimrc dest=~/
     template: src=templates/init.vim dest=~/
+
   - name: Install vim plugins
     shell: nvim +PluginInstall +qall --headless
