@@ -1,0 +1,8 @@
+- hosts: localhost
+  become: true
+  tasks:
+  - name: Install htop
+    apt: name=htop
+  - name: Install neovim
+    apt: name=neovim
+
