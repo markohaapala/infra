@@ -1,5 +1,6 @@
 set nocompatible
 filetype off
+" this file needs cleanup. 15 years of appending to it really shows.
 
 filetype plugin indent on
 

@@ -4,7 +4,7 @@
   - name: Install packages
     become: true
     apt:
-      name: ['htop', 'neovim']
+      name: ['htop', 'neovim', 'net-tools', 'nfs-common', 'vlc-bin', 'tmux', 'cmake', 'curl']
 
   - name: Copy properties
     copy: src={{ item.src }} dest={{ item.dest }}
@@ -14,3 +14,10 @@
 
   - name: Install vim plugins
     shell: nvim +PluginInstall +qall --headless
+
+  - name: Install oz-my-zsh
+    include_tasks: "tasks/oh-my-zsh.yml"
+
+  - git:
+      repo: 'https://gitlab.com/interception/linux/plugins/caps2esc'
+      dest: '~/src/caps2esc'

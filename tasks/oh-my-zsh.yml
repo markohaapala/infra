@@ -1,0 +1,24 @@
+---
+# Install shell OhMyZsh
+
+- name: Install zsh
+  become: true
+  apt:
+    name: 'zsh'
+
+- name: Cloning oh-my-zsh
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh
+    dest: ~/.oh-my-zsh
+    update: no
+
+- name: Copy .zshrc
+  copy:
+    src: templates/.zshrc
+    dest: ~/.zshrc
+
+- name: Change user shell
+  become: true
+  user:
+    name: "{{ lookup('env','USER') }}"
+    shell: /usr/bin/zsh
