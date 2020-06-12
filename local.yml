@@ -6,9 +6,11 @@
     apt:
       name: ['htop', 'neovim']
 
-  - name: Copy templates
-    copy: src=templates/.vimrc dest=~/
-    copy: src=templates/init.vim dest=~/
+  - name: Copy properties
+    copy: src={{ item.src }} dest={{ item.dest }}
+    with_items:
+      - { src: 'templates/.vimrc', dest: '~/.vimrc' }
+      - { src: 'templates/init.vim', dest: '~/.config/nvim/init.vim' }
 
   - name: Install vim plugins
     shell: nvim +PluginInstall +qall --headless
