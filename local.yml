@@ -1,4 +1,5 @@
 - hosts: localhost
+  become: false
   tasks:
   - name: Install packages
     become: true
@@ -6,8 +7,8 @@
       name: ['htop', 'neovim']
 
   - name: Copy templates
-    template: src=templates/.vimrc dest=~/
-    template: src=templates/init.vim dest=~/
+    copy: src=templates/.vimrc dest=~/
+    copy: src=templates/init.vim dest=~/
 
   - name: Install vim plugins
     shell: nvim +PluginInstall +qall --headless
